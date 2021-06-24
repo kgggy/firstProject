@@ -1,4 +1,4 @@
-package firstProject;
+package basic;
 
 public class VarExample {
 	public static void main(String[] args) {
@@ -7,14 +7,15 @@ public class VarExample {
 		eng = 71;
 		
 		int sum = kor + eng;
-		System.out.println("ÇÕ: " + sum);
+		System.out.println("í•©: " + sum);
 		
 		sum = 100;
 		
 		double avg = sum / 2.0; // 65.5 
-		System.out.println("Æò±Õ: " + avg);
+		System.out.println("í‰ê· : " + avg);
 		
-		System.out.println("µÎ ¼öÀÇ °ö: " + kor * eng);
+		System.out.println("ë‘ ìˆ˜ì˜ ê³±: " + kor * eng);
 		
 	}
 }
+

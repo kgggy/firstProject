@@ -1,17 +1,17 @@
-package firstProject;
+package basic;
 
 public class AvgExample {
 	public static void main(String[] args) {
-//		±¹¾î, ¿µ¾î. ¼öÇĞ 0 ~ 100
+//		êµ­ì–´, ì˜ì–´. ìˆ˜í•™ 0 ~ 100
 		int kor = 100;
 		int eng = 100;
 		int math = 98;
-		String name = "±Ç°¡¿µ";
+		String name = "ê¶Œê°€ì˜";
 		
 		int sum = kor + eng + math;
 	    double avg = sum/3.0;
 	    
-	    System.out.println(name + "ÇĞ»ıÀÇ Á¡¼öÇÕ°è´Â " + sum + ", Æò±ÕÀº " + avg + "Á¡ ÀÔ´Ï´Ù.");
+	    System.out.println(name + "í•™ìƒì˜ ì ìˆ˜í•©ê³„ëŠ” " + sum + ", í‰ê· ì€ " + avg + "ì  ì…ë‹ˆë‹¤.");
 
 	}
 

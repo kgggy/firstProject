@@ -1,4 +1,4 @@
-package firstProject;
+package basic;
 
 public class GitExm {
 	public static void main(String[] args) {
