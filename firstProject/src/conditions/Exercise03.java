@@ -8,9 +8,9 @@ public class Exercise03 {
 			if (i % 3 == 0) {
 				sum = sum + i;
 			}
-			System.out.println("3ÀÇ ¹è¼öÀÇ ÇÕ : " + sum);
 
-	}
+
+	}			System.out.println("3ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ : " + sum);
 
 }
 }
