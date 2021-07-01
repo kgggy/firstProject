@@ -6,6 +6,27 @@ public class Student {
 	private int eng;
 	private int math;
 	
+	public Student() {  //매개값이 없는 기본 생성자.(클래스 이름과 똑같음)
+		//리턴타입이 없음, 초기값도 없는 인스턴스를 만들겠다는 뜻
+	}
+	
+	public Student(String name) { //매개값을 가지는 생성자. name을 필드에 초기화시킴
+		this.name = name;
+	}
+
+
+	public Student(String name, int grd) {
+		this.name = name;
+		this.grd = grd;
+	}
+	
+	public Student(String name, int grd, int eng, int math) {
+		this.name = name;
+		this.grd = grd;
+		this.eng = eng;
+		this.math = math;
+	}
+	
 	public String getName() {
 		return name;
 	}

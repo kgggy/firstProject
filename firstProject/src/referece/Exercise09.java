@@ -22,16 +22,15 @@ public class Exercise09 {
 
 			int selectNo = scanner.nextInt();
 
-			if (selectNo == 1) {
-				if (selectNo > 1) {
-					System.out.println("처리할 수 없습니다.");
-				} else {
+			if (selectNo == 2 || selectNo == 3 ||selectNo == 4 || selectNo == 5)   {
+				System.out.println("처리할 수 없습니다.");
+				if (selectNo == 1) {
 					System.out.println("학생수 > ");
 					studentNum = scanner.nextInt();
 					scores = new int[studentNum];
-				}
+				} 
 
-			} else if (selectNo == 2) {
+			} else if (selectNo > 2) {
 				for (int i = 0; i < scores.length; i++) {
 					System.out.println("scores[" + i + "]" + ">");
 					scores[i] = scanner.nextInt();
