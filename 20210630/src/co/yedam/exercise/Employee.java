@@ -26,6 +26,7 @@ public class Employee {
 		this.empNum = empNum;
 		this.empEmail = empEmail;
 	}
+	//오른쪽마우스-source-construct using field
 	
 	public String getEmpName() {
 		return empName;

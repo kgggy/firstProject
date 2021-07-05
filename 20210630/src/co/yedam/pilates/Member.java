@@ -1,12 +1,24 @@
 package co.yedam.pilates;
 
-public class Member {
-	private int memberId;
-	private String memberName;
+public class Member { //class
+	//field
+	//new를 이용하여 생성자 생성하여 값을 초기화해줌.
+	private int memberId; //초기값 => 0
+	private String memberName; //초기값 => null
 	private String memberPhone;
 	private String memberBirth;
 	private Gender memberGen; // MEN, WOMEN만 들어갈 수 있도록 enum 생성
 	
+
+
+	public Member(int memberId, String memberName, String memberPhone) {
+		super();
+		this.memberId = memberId; //변수와 필드(this)를 구분하기 위해 this룰 이용.(
+		this.memberName = memberName;
+		this.memberPhone = memberPhone;
+	
+	}
+
 	public Member(int memberId, String memberName, String memberPhone, String memberBirth, Gender memberGen) {
 //		super();
 		this.memberId = memberId;
@@ -14,6 +26,11 @@ public class Member {
 		this.memberPhone = memberPhone;
 		this.memberBirth = memberBirth;
 		this.memberGen = memberGen;
+	}
+	
+	public Member() {
+		this.memberId = 100;
+		
 	}
 	
 	public int getMemberId() {

@@ -1,16 +1,22 @@
-package co.yedam.exercise;
+package co.yedam.Account;
 
 public class Account {
-	private String ano;
-	private String owner;
-	private int balance;
+	//필드
+	private String ano; //계좌번호
+	private String owner; //계좌주
+	private int balance; // 현재잔액
 	
+	//생성자
+	public Account() {
+		
+	}
 	public Account(String ano, String owner, int balance) {
 		this.ano = ano;
 		this.owner = owner;
 		this.balance = balance;
 	}
 
+	//메소드
 	public String getAno() {
 		return ano;
 	}
