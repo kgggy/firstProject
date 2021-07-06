@@ -31,28 +31,28 @@ public class DaoExample {
 		dao2.insert();
 		dao2.update();
 		dao2.delete();
-		
+
 		dao2 = new Dao() {
-		@Override
-		public void insert() {
-			System.out.println("postgreSQL 입력처리.");
-		}
+			@Override
+			public void insert() {
+				System.out.println("postgreSQL 입력처리.");
+			}
 
-		@Override
-		public void update() {
-			System.out.println("postgreSQL 수정처리.");
-		}
+			@Override
+			public void update() {
+				System.out.println("postgreSQL 수정처리.");
+			}
 
-		@Override
-		public void delete() {
-			System.out.println("postgreSQL 삭제처리.");
-		}
+			@Override
+			public void delete() {
+				System.out.println("postgreSQL 삭제처리.");
+			}
 
-	};
+		};
 
-	dao2.insert();
-	dao2.update();
-	dao2.delete();
+		dao2.insert();
+		dao2.update();
+		dao2.delete();
 		// 인터페이스는 유지보수에 편리
 //	dao = new MysqlDao();
 	}
