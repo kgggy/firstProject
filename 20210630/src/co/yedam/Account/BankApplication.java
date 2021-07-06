@@ -53,13 +53,10 @@ public class BankApplication {
 				deposit();
 			} else if (selectNo == 4) {
 				withdraw();
-
 			} else if (selectNo == 5) {
 				fileSave();
-
 			} else if (selectNo == 6) {
 				fileOpen();
-
 			} else if (selectNo == 7) {
 				run = false;
 			}
