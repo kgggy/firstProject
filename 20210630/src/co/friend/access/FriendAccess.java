@@ -1,5 +1,7 @@
 package co.friend.access;
 
+import java.util.List;
+
 import co.friend.model.Friend;
 
 public interface FriendAccess {
@@ -11,8 +13,9 @@ public interface FriendAccess {
 
 	public void delete(String name);
 
-	public Friend[] selectAll(); // Friend배열 타입을 리턴해줌.
-
+	//public Friend[] selectAll(); // Friend배열 타입을 리턴해줌.
+	public List<Friend> selectAll();
+	
 	public Friend selectOne(String name); //한 건만 조회.(만약 동일한 이름이 있다면 배열로 리턴해야함)
 	
 	public Friend findTel(String tel);

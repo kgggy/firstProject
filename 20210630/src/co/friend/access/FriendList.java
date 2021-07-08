@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import co.friend.model.Friend;
@@ -14,7 +16,7 @@ import co.friend.model.Friend;
 public class FriendList implements FriendAccess {
 
 	String path = "c:/tmp/friendList.txt";
-	Friend[] friends;
+	List<Friend> friends;
 
 	public void open() { // 이전에 저장해놓은 작업들 불러와서 배열에 담는 역할.
 		File file = new File(path);
@@ -41,12 +43,13 @@ public class FriendList implements FriendAccess {
 				Friend friend = new Friend(arr[0], arr[1], arr[2]);
 
 				// 배열의 빈 공간에 한 건씩 저장.
-				for (int i = 0; i < friends.length; i++) {
-					if (friends[i] == null) {
-						friends[i] = friend;
-						break;
-					}
-				}
+//				for (int i = 0; i < friends.length; i++) {
+//					if (friends[i] == null) {
+//						friends[i] = friend;
+//						break;
+//					}
+//				}
+				friends.add(friend);
 			}
 			scn.close();
 
@@ -59,11 +62,15 @@ public class FriendList implements FriendAccess {
 		BufferedWriter br = null;
 		try {
 			br = new BufferedWriter(new FileWriter(path)); // BufferedWriter => 한바이트씩보다는 한번에 모아서 불러오기.
-			for (int i = 0; i < friends.length; i++) {
-				if (friends[i] != null) {
-					br.write(String.format("%s,%s,%s\n", friends[i].getGubun(), friends[i].getName(),
-							friends[i].getTel())); // "%s,%s,%s,\n" => 문자열,문자열,문자열,엔터 형식으로 friends배열의 내용을 문자열을 만듦.
-				}
+//			for (int i = 0; i < friends.length; i++) {
+//				if (friends[i] != null) {
+//					br.write(String.format("%s,%s,%s\n", friends[i].getGubun(), friends[i].getName(),
+//							friends[i].getTel())); // "%s,%s,%s,\n" => 문자열,문자열,문자열,엔터 형식으로 friends배열의 내용을 문자열을 만듦.
+//				}
+//			}
+			for (int i = 0; i < friends.size(); i++) {
+				br.write(String.format("%s,%s,%s\n", friends.get(i).getGubun(), friends.get(i).getName(),
+						friends.get(i).getTel())); // "%s,%s,%s,\n" => 문자열,문자열,문자열,엔터 형식으로 friends배열의 내용을 문자열을 만듦.
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -77,94 +84,125 @@ public class FriendList implements FriendAccess {
 	}
 
 	public FriendList() {
-		friends = new Friend[10];
+		// friends = new Friend[10];
+		friends = new ArrayList<Friend>();
 		open();
 	}
 
 	@Override
 	public void insert(Friend friend) {
-		for (int i = 0; i < friends.length; i++) {
-			if (friends[i] == null) {
-				friends[i] = friend;
-				break;
-			}
-		}
+//		for (int i = 0; i < friends.length; i++) {
+//			if (friends[i] == null) {
+//				friends[i] = friend;
+//				break;
+//			}
+//		}
+		friends.add(friend);
 		save();
 	}
 
-	
-	public static void noNamed(Friend noN) {
-		if (noN == null) {
-			System.out.println("찾는 이름이 없습니다.");
-		} else {
-			System.out.println(noN);
-		}
-	}
-	
+//	public static void noNamed(Friend noN) {
+//		if (noN == null) {
+//			System.out.println("찾는 이름이 없습니다.");
+//		} else {
+//			System.out.println(noN);
+//		}
+//	}
+
 	@Override
 	public void update(Friend friend) {
-		boolean run = false;
-		for (int i = 0; i < friends.length; i++) {
-			if (friends[i] != null && friends[i].getName().equals(friend.getName())) { // 배열의 요소중에서 값이 있는 요소만 가져와서 이름끼리
-																						// 비교.
-				friends[i].setTel(friend.getTel());
-				run = true;
+//		boolean run = false;
+//		for (int i = 0; i < friends.length; i++) {
+//			if (friends[i] != null && friends[i].getName().equals(friend.getName())) { // 배열의 요소중에서 값이 있는 요소만 가져와서 이름끼리
+//																						// 비교.
+//				friends[i].setTel(friend.getTel());
+//				run = true;
+//				break;
+//			}
+//		}
+//		if (!run) {
+//			if (friends != null) {
+//				System.out.println("찾는 이름이 없습니다.");
+//			} else {
+//				System.out.println("비어있습니다.");
+//			}
+//		}
+
+		for (int i = 0; i < friends.size(); i++) {
+			if (friends.get(i) != null && (friends.get(i).getName().equals(friend.getName()))) {
+				friends.get(i).setTel(friend.getTel());
 				break;
 			}
 		}
-		if (!run) {
-			if (friends != null) {
-				System.out.println("찾는 이름이 없습니다.");
-			} else {
-				System.out.println("비어있습니다.");
-			}
-		}
-		
+
 		save();
 
 	}
 
 	@Override
 	public void delete(String name) {
-		boolean run = true; // boolean이 true일때만 출력해줌.
-		for (int i = 0; i < friends.length; i++) {
-			if (friends[i] != null && friends[i].getName().equals(name)) {
-				friends[i] = null;
-				run = false;
+//		boolean run = true; // boolean이 true일때만 출력해줌.
+//		for (int i = 0; i < friends.length; i++) {
+//			if (friends[i] != null && friends[i].getName().equals(name)) {
+//				friends[i] = null;
+//				run = false;
+//				break;
+//			}
+//		}
+//		if (run) {
+//			if (friends != null) {
+//				System.out.println("찾는 이름이 없습니다.");
+//			} else {
+//				System.out.println("비어있습니다.");
+//			}
+//		}
+		for(int i=0; i<friends.size();i++) {
+			if(friends.get(i).getName().equals(name)) {
+				friends.remove(i);
+				System.out.println("한 건 삭제되었습니다.");
 				break;
 			}
 		}
-		if (run) {
-			if (friends != null) {
-				System.out.println("찾는 이름이 없습니다.");
-			} else {
-				System.out.println("비어있습니다.");
-			}
-		}
-
+		
 		save();
 	}
 
 	@Override
-	public Friend[] selectAll() {
+	public List<Friend> selectAll() {
 		return friends;
 	}
 
 	@Override
+//	public Friend selectOne(String name) {
+//		for (int i = 0; i < friends.length; i++) {
+//			if (friends[i] != null && friends[i].getName().equals(name)) {
+//				return friends[i];
+//			}
+//		}
+//		return null;
+//	}
 	public Friend selectOne(String name) {
-		for (int i = 0; i < friends.length; i++) {
-			if (friends[i] != null && friends[i].getName().equals(name)) {
-				return friends[i];
+		for (int i = 0; i < friends.size(); i++) {
+			if (friends.get(i) != null && friends.get(i).getName().equals(name)) {
+				return friends.get(i);
 			}
 		}
 		return null;
 	}
 
 	@Override
+//	public Friend findTel(String tel) {
+//		for (int i = 0; i < friends.length; i++) {
+//			if (friends[i] != null && friends[i].getTel().equals(tel)) {
+//				return friends[i];
+//			}
+//		}
+//		return null;
+//	}
 	public Friend findTel(String tel) {
-		for (int i = 0; i < friends.length; i++) {
-			if (friends[i] != null && friends[i].getTel().equals(tel)) {
-				return friends[i];
+		for (int i = 0; i < friends.size(); i++) {
+			if (friends.get(i) != null && friends.get(i).getTel().equals(tel)) {
+				return friends.get(i);
 			}
 		}
 		return null;
